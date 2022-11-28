@@ -17,7 +17,7 @@ namespace BNG {
         /// <summary>
         /// If RequireHandleTurnToOpen and the handle has not fully opened then the door will be kinematic / immovable
         /// </summary>
-        bool handleLocked = false;
+        public bool handleLocked = false;
 
         /// <summary>
         /// This transform is used to determine how many degrees have been turned. Required if RequireHandleTurnToOpen is true

@@ -5,6 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartHomeScene.unity
+    guid: 21719be002acaa644a9d6ecc29d0f281
+  - enabled: 1
+    path: Assets/Scenes/HospitalScene.unity
+    guid: 7ef49802ec223a44b8d998dc89c731fd
   - enabled: 0
     path: Assets/BNG Framework/Scenes/XR Demo.unity
     guid: a1360534006d3f845bc79b46b93cfec5

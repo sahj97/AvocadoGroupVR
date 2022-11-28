@@ -12,11 +12,15 @@ namespace BNG {
     /// </summary>
     public class Damageable : MonoBehaviour {
 
+        public GhostCounter ghostCounterScript;
+        private int instanceNumber;
+
         public float Health = 100;
         private float _startingHealth;
 
         [Tooltip("If specified, this GameObject will be instantiated at this transform's position on death.")]
         public GameObject SpawnOnDeath;
+        private int RandomNumber;
 
         [Tooltip("Activate these GameObjects on Death")]
         public List<GameObject> ActivateGameObjectsOnDeath;
@@ -92,17 +96,24 @@ namespace BNG {
 
         public virtual void DealDamage(float damageAmount) {
             DealDamage(damageAmount, transform.position);
+            Debug.Log("Ghostie got got");
         }
 
         public virtual void DealDamage(float damageAmount, Vector3? hitPosition = null, Vector3? hitNormal = null, bool reactToHit = true, GameObject sender = null, GameObject receiver = null) {
 
             if (destroyed) {
+                //reports ghost kill to ghost counter script and checks to see if right # of ghosts have been killed to unlock doors
+                //ghostCounterScript.numberGhostsKilled++;
+                //ghostCounterScript.UnlockStartDoors();
+                //ghostCounterScript.UnlockScrubRoomDoors();
+                //Debug.Log(ghostCounterScript.numberGhostsKilled + "ghosties down");
                 return;
             }
 
             Health -= damageAmount;
 
             onDamaged?.Invoke(damageAmount);
+
 
             // Invector Integration
 #if INVECTOR_BASIC || INVECTOR_AI_TEMPLATE
@@ -142,10 +153,16 @@ namespace BNG {
             }
 
             // Spawn object
+            //RandomNumber = Random.Range(3, 6);
             if (SpawnOnDeath != null) {
-                var go = GameObject.Instantiate(SpawnOnDeath);
-                go.transform.position = transform.position;
-                go.transform.rotation = transform.rotation;
+
+                for (int i = 0; i < 5; i++)
+                {
+                    var go = GameObject.Instantiate(SpawnOnDeath);
+                    go.transform.position = transform.position;
+                    go.transform.rotation = transform.rotation;
+                }
+                //Debug.Log(RandomNumber + "ghost goos and " + ghostCounterScript.numberGhostsKilled + " ghosties killed");
             }
 
             // Force to kinematic if rigid present
