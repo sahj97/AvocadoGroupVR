@@ -8,6 +8,8 @@ TagManager:
   - goo
   - bullett
   - sponge
+  - sterile
+  - unsterile
   layers:
   - Default
   - TransparentFX
