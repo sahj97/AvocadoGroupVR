@@ -8,6 +8,7 @@ namespace BNG
     public class NewInputs : MonoBehaviour
     {
         GhostCounter ghostCounterScript;
+        ScrubStepDetector scrubStepScript;
 
         // Start is called before the first frame update
         void Start()
@@ -18,9 +19,9 @@ namespace BNG
         // Update is called once per frame
         void Update()
         {
-            if (InputBridge.Instance.AButtonDown && ghostCounterScript.allGooGones == true)
+            if (InputBridge.Instance.AButtonDown && scrubStepScript.playerIsAtSink == true)
             {
-                Debug.Log("A Button pressed in scrub room");
+                Debug.Log("A Button pressed and player is at sink");
             }
         }
 
