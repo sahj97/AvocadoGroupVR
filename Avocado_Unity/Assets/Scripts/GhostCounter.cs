@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace BNG
 {
     public class GhostCounter : MonoBehaviour
     {
-        [Header ("GameObjects")]
+        [Header ("Game Objects")]
         public GameObject startRoomDoorR;
         public GameObject startRoomDoorL;
+        public GameObject mainStartDoor;
+        public GameObject myLockStart;
+        public GameObject myUnlockStart;
         public GameObject doorBlocker1;
+        public GameObject visionObscur;
         public GameObject doorBlocker2;
         public GameObject scrubRoomDoorR;
         public GameObject scrubRoomDoorL;
+        public GameObject myLockScrub;
+        public GameObject myUnlockScrub;
 
         [Header ("Animations")]
         public Animator ghostBossAnim;
@@ -44,27 +51,29 @@ namespace BNG
             StartCoroutine(UnlockScrubRoomDoors());
         }
 
-        public void GhostiesKilled()        //this is run on the destroy event of the damagale script on ghosts
+        public void GhostiesKilled()        //this is run on the destroy event of the damagable script on ghosts, keeps track of how many ghosts killed
         {
             numberGhostsKilled++;
-            Debug.Log(numberGhostsKilled + "ghost killed (ghost kill script)");
-
-            if (numberGhostsKilled == 5)
-            {
+            Debug.Log(numberGhostsKilled + "ghost killed (from damagable script)");
+            if (numberGhostsKilled == 5){
                 ghostBossKilled = true;
             }
         }    
 
         //Checks if you have killed the first starting ghost to unlock the first set of doors
         public IEnumerator UnlockStartDoors(){
-            Debug.Log("Check if start door unlocked");
+            //Debug.Log("Check if start door unlocked");
             yield return new WaitUntil(OneGhostDown);
             startRoomDoorR.GetComponent<DoorHelper>().DoorIsLocked = false;
             startRoomDoorR.GetComponent<DoorHelper>().handleLocked = false;
             startRoomDoorL.GetComponent<DoorHelper>().DoorIsLocked = false;
             startRoomDoorL.GetComponent<DoorHelper>().handleLocked = false;
             scrubRoomUnlocked = true;
+            myLockStart.SetActive(false);
+            myUnlockStart.SetActive(true);
+            mainStartDoor.GetComponent<AudioSource>().Play();
             Destroy(doorBlocker1);
+            Destroy(visionObscur);
             ghostBossAnim.Play("GhostBOSS");
 
             Debug.Log("Start door is unlocked");
@@ -81,22 +90,25 @@ namespace BNG
         }
      
 
-        //Checks if you have killed all ghosts to unlock the scrub room doors
+        //Checks if you have killed ALL ghosts to unlock the scrub room doors
         public IEnumerator UnlockScrubRoomDoors()
         {
-            Debug.Log("Check if scrub room unlocked");
+            //Debug.Log("Check if scrub room unlocked");
             yield return new WaitUntil(AllClear);
             scrubRoomDoorR.GetComponent<DoorHelper>().DoorIsLocked = false;
             scrubRoomDoorR.GetComponent<DoorHelper>().handleLocked = false;
             scrubRoomDoorL.GetComponent<DoorHelper>().DoorIsLocked = false;
             scrubRoomDoorL.GetComponent<DoorHelper>().handleLocked = false;
+            myLockScrub.SetActive(false);
+            myUnlockScrub.SetActive(true);
+            scrubRoomDoorL.GetComponent<AudioSource>().Play();
             Destroy(doorBlocker2);
 
             Debug.Log("Scrub room unlocked");
         }
         bool AllClear()
         {
-            if (numberGhostsKilled >= 4 && numberGoosCleaned >=20)
+            if (numberGhostsKilled >= 4 && numberGoosCleaned >=25)
             {
                 return true;
             }

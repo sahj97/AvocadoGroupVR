@@ -19,6 +19,7 @@ namespace BNG
         public bool playerIsAtSink;
         public int currentStep;
         public GameObject[] stepAnimation;
+        public Animator[] stepAnimsAnimators;
         public int[] numberTimesPerStep;
 
         void Start(){
@@ -27,24 +28,16 @@ namespace BNG
             getGloves = false;
             getGown = false;
             playerIsAtSink = false;
+            currentStep = 0;
         }
 
         void Update(){
 
         }
 
-        //Trigger detecting if player is standing at the sink or not. We don't want animations to play if not at sink
-        public void OnTriggerEnter(Collider floorSpot){
-            if (floorSpot.gameObject.name == "FloorSpot"){
-                playerIsAtSink = true;
-                Debug.Log("Player is at the sink");
-            }
-        }
-        public void OnTriggerExit(Collider floorSpot){
-            if (floorSpot.gameObject.name == "FloorSpot"){
-                playerIsAtSink = false;
-                Debug.Log("Player left the sink");
-            }
+        public void StepCounter()
+        {
+
         }
 
     }
