@@ -16,7 +16,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftFoot' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -79,8 +80,211 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: Armature
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: base.003
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: base.002
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bendy.003
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bendy.002
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Mask
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: base.001
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: base
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bendy.001
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: bendy
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: MaskedAvocadoUpdated(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eyes
+      parentName: MaskedAvocadoUpdated(Clone)
+      position: {x: -0.15170014, y: 0.6212586, z: 0.000000002095828}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.052073427, y: 0.052073427, z: 0.052073427}
+    - name: Mouth
+      parentName: MaskedAvocadoUpdated(Clone)
+      position: {x: 4.656613e-10, y: 0.53457004, z: -0.013972279}
+      rotation: {x: 0.00000008146033, y: 0, z: -0, w: 1}
+      scale: {x: 0.054635666, y: 0.054635666, z: 0.054635666}
+    - name: Cylinder.002
+      parentName: MaskedAvocadoUpdated(Clone)
+      position: {x: 0.3047006, y: -0.48741874, z: 0.028492091}
+      rotation: {x: -0.05535085, y: 0.7075088, z: -0.70288026, w: -0.048238117}
+      scale: {x: 0.03215399, y: 0.03215399, z: 0.032153994}
+    - name: Armature
+      parentName: MaskedAvocadoUpdated(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone
+      parentName: Armature
+      position: {x: 0.0039909272, y: -0.20031573, z: 0.012195565}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Flesh
+      parentName: Bone
+      position: {x: 0.0019534328, y: 0.7652386, z: -0.2132594}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.7200569, y: 0.7447738, z: 0.7447738}
+    - name: Pit
+      parentName: Bone
+      position: {x: 0.0023562475, y: -0.10994351, z: -0.2088278}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.32925725, y: 0.32925725, z: 0.32925725}
+    - name: Shell
+      parentName: Bone
+      position: {x: 0.0050037676, y: 0.76116425, z: -0.21298546}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.7200569, y: 0.7447738, z: 0.7447738}
+    - name: Mask
+      parentName: Bone
+      position: {x: 0.0014295136, y: 0.49130893, z: -0.25482097}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: -0.09555642, y: -0.06650207, z: -0.09555642}
+    - name: base
+      parentName: Bone
+      position: {x: 0.637156, y: 0.08084422, z: -0.1717543}
+      rotation: {x: -0.00000006883939, y: -0.00000006883938, z: -0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bendy
+      parentName: base
+      position: {x: -0.0000000018894655, y: 0.08133769, z: -5.1093707e-10}
+      rotation: {x: -2.9663985e-10, y: 9.303752e-20, z: -0.0015235179, w: 0.99999887}
+      scale: {x: 0.9999977, y: 1.0000045, z: 0.9999977}
+    - name: end
+      parentName: Bone
+      position: {x: 1.5533718, y: 0.07830031, z: -0.1717543}
+      rotation: {x: -0.00000006883939, y: -0.00000006883938, z: -0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: base.001
+      parentName: Bone
+      position: {x: -0.61806977, y: 0.08084422, z: -0.1717543}
+      rotation: {x: 0.00000018404174, y: -0.00000018404171, z: 0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bendy.001
+      parentName: base.001
+      position: {x: -3.355094e-11, y: 0.08133745, z: -2.952305e-12}
+      rotation: {x: 0, y: -0.00000011920933, z: -0, w: 1}
+      scale: {x: 1.0000018, y: 0.99999636, z: 1.0000018}
+    - name: end.001
+      parentName: Bone
+      position: {x: -1.5342822, y: 0.08084422, z: -0.1717543}
+      rotation: {x: 0.00000018404174, y: -0.00000018404171, z: 0.7071068, w: 0.7071067}
+      scale: {x: 1, y: 1, z: 1}
+    - name: base.002
+      parentName: Bone
+      position: {x: 0.31064445, y: -0.6636846, z: -0.17561266}
+      rotation: {x: 0.0000000754979, y: -3.3001183e-15, z: 1, w: 0.00000004371139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bendy.002
+      parentName: base.002
+      position: {x: 0.00000000373006, y: 0.081335306, z: -9.2015284e-10}
+      rotation: {x: -0.00000008720756, y: 0.00000047683716, z: -2.8415831e-14, w: 1}
+      scale: {x: 1.1414658, y: 0.76749265, z: 1.1414658}
+    - name: end.002
+      parentName: Bone
+      position: {x: 0.31064445, y: -1.3857827, z: -0.17561278}
+      rotation: {x: -0.00000052054855, y: -2.2753954e-14, z: 1, w: -0.00000004371139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: base.003
+      parentName: Bone
+      position: {x: -0.3002261, y: -0.66454315, z: -0.17561266}
+      rotation: {x: 0.0000000754979, y: -3.3001183e-15, z: 1, w: 0.00000004371139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: bendy.003
+      parentName: base.003
+      position: {x: 0.00000000373006, y: 0.081335306, z: -2.6783908e-11}
+      rotation: {x: -0.00000008720756, y: 0.0000009536743, z: -6.9999636e-14, w: 1}
+      scale: {x: 1.1414658, y: 0.76749265, z: 1.1414658}
+    - name: end.003
+      parentName: Bone
+      position: {x: -0.3002261, y: -1.3866413, z: -0.17561278}
+      rotation: {x: -0.0000009973857, y: -4.359731e-14, z: 1, w: -0.00000004371139}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eyes.001
+      parentName: MaskedAvocadoUpdated(Clone)
+      position: {x: 0.16358885, y: 0.6212586, z: 0.000000003736494}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 0.052073427, y: 0.052073427, z: 0.052073427}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

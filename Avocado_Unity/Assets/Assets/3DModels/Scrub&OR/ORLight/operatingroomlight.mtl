@@ -1,0 +1,21 @@
+# File produced by Open Asset Import Library (http://www.assimp.sf.net)
+# (assimp v4.1.0)
+
+newmtl Material02
+Kd 0.800000011920929 0.800000011920929 0.800000011920929
+Ka 0.2000000029802322 0.2000000029802322 0.2000000029802322
+Ks 0 0 0
+Ke 0 0 0
+d 1
+illum 1
+map_Kd Op-table-light-blood.tga
+
+newmtl C:WORKFPS CreatorMAPS	extureban
+Kd 1 1 1
+Ka 0 0 0
+Ks 0.04500000178813934 0.04500000178813934 0.04500000178813934
+Ke 0 0 0
+d 1
+Ns 8
+illum 2
+
