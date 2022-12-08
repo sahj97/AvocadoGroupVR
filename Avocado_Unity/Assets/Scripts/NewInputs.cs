@@ -7,7 +7,6 @@ namespace BNG
 {
     public class NewInputs : MonoBehaviour
     {
-        public GhostCounter ghostCounterScript;
         public ScrubStepDetector scrubStepScript;
 
         public Grabber rightHandGrabber;
@@ -28,19 +27,27 @@ namespace BNG
 
                 if (rightHandGrabber.HeldGrabbable != null)
                 {
-                    if(rightHandGrabber.HeldGrabbable.gameObject.name == "Grabbable_Mask")
+                    if(scrubStepScript.currentStep == 0 && rightHandGrabber.HeldGrabbable.gameObject.name == "Grabbable_Mask")
                     {
-                        Debug.Log("Pressed A while holding mask");
+                        Debug.Log("Pressed A while holding mask (step1)");
                         scrubStepScript.putOnMask = true;
+
+                        StartCoroutine(scrubStepScript.CheckCurrentStep());
                     }
                 }
 
-            }
 
-            if (InputBridge.Instance.AButtonDown && scrubStepScript.playerIsAtSink == true)
-            {
-                Debug.Log("A Button pressed and player is at sink");
+
+
+                if (scrubStepScript.playerIsAtSink == true)
+                {
+                    Debug.Log("A Button pressed and player is at sink");
+                    scrubStepScript.ScrubStepCounter();
+                }
+
+
             }
+            
         }
 
 

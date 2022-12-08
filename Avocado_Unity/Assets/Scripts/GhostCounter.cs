@@ -7,7 +7,7 @@ namespace BNG
 {
     public class GhostCounter : MonoBehaviour
     {
-        [Header ("Game Objects")]
+        [Header ("Game Objects for Ghost Fighting")]
         public GameObject startRoomDoorR;
         public GameObject startRoomDoorL;
         public GameObject mainStartDoor;
@@ -20,6 +20,7 @@ namespace BNG
         public GameObject scrubRoomDoorL;
         public GameObject myLockScrub;
         public GameObject myUnlockScrub;
+        public AudioSource unlockSound;
 
         [Header ("Animations")]
         public Animator ghostBossAnim;
@@ -71,16 +72,15 @@ namespace BNG
             scrubRoomUnlocked = true;
             myLockStart.SetActive(false);
             myUnlockStart.SetActive(true);
-            mainStartDoor.GetComponent<AudioSource>().Play();
+            unlockSound.Play();
             Destroy(doorBlocker1);
             Destroy(visionObscur);
-            ghostBossAnim.Play("GhostBOSS");
 
             Debug.Log("Start door is unlocked");
         }
         bool OneGhostDown()
         {
-            if (numberGhostsKilled >= 1 && numberGoosCleaned >=5){
+            if (numberGhostsKilled >= 1 && numberGoosCleaned >=4){
                 //Debug.Log("testing testing");
                 return true;
             }
@@ -101,28 +101,19 @@ namespace BNG
             scrubRoomDoorL.GetComponent<DoorHelper>().handleLocked = false;
             myLockScrub.SetActive(false);
             myUnlockScrub.SetActive(true);
-            scrubRoomDoorL.GetComponent<AudioSource>().Play();
+            unlockSound.Play();
             Destroy(doorBlocker2);
 
             Debug.Log("Scrub room unlocked");
         }
-        bool AllClear()
+        bool AllClear() //bool for UnlockScrubRoomDoors
         {
-            if (numberGhostsKilled >= 4 && numberGoosCleaned >=25)
-            {
+            if (numberGhostsKilled >= 5 && numberGoosCleaned >=20){
                 return true;
             }
-            else
-            {
+            else{
                 return false;
             }
-        }
-
-
-        public void BringInTheAvo()
-        {
-            doorOR.Play("ScrubDoorOpen");
-            avoHelper.Play("AvoWalkInRoom");
         }
 
 

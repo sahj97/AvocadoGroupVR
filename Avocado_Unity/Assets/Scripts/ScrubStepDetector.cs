@@ -22,22 +22,40 @@ namespace BNG
         public Animator[] stepAnimsAnimators;
         public int[] numberTimesPerStep;
 
+        //Make sure none of the steps are accidentally checked off before starting
         void Start(){
+            currentStep = 0;
             putOnMask = false;
             putOnGlasses = false;
             getGloves = false;
             getGown = false;
             playerIsAtSink = false;
-            currentStep = 0;
         }
 
         void Update(){
 
         }
 
-        public void StepCounter()
-        {
 
+        public IEnumerator CheckCurrentStep()
+        {
+            yield return new WaitUntil(StepOneDone);
+        }
+
+        //Bools checking if each step is done so that the coroutine CheckCurrentStep can progress
+        bool StepOneDone(){
+            if (putOnMask == true){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+
+
+        public void ScrubStepCounter()
+        {
+            Debug.Log("I am on step " + currentStep);
         }
 
     }

@@ -156,7 +156,7 @@ namespace BNG {
             //RandomNumber = Random.Range(3, 6);
             if (SpawnOnDeath != null) {
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     var go = GameObject.Instantiate(SpawnOnDeath);
                     go.transform.position = transform.position;

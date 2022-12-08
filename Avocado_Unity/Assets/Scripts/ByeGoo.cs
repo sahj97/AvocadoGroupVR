@@ -6,18 +6,7 @@ namespace BNG
 {
     public class ByeGoo : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
+        //Destroys goo blobs when they come in contact with the sponge
         public void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.tag == "sponge")
