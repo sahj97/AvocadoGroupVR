@@ -36,8 +36,7 @@ namespace BNG
 
 
         // Start is called before the first frame update
-        void Start()
-        {
+        void Start(){
             numberGhostsKilled = 0;
             numberGoosCleaned = 0;
             ghostBossKilled = false;
@@ -46,14 +45,12 @@ namespace BNG
         }
 
         // Update is called once per frame
-        void Update()
-        {
+        void Update(){
             StartCoroutine(UnlockStartDoors());
             StartCoroutine(UnlockScrubRoomDoors());
         }
 
-        public void GhostiesKilled()        //this is run on the destroy event of the damagable script on ghosts, keeps track of how many ghosts killed
-        {
+        public void GhostiesKilled() {        //this is run on the destroy event of the damagable script on ghosts, keeps track of how many ghosts killed
             numberGhostsKilled++;
             Debug.Log(numberGhostsKilled + "ghost killed (from damagable script)");
             if (numberGhostsKilled == 5){
@@ -75,11 +72,9 @@ namespace BNG
             unlockSound.Play();
             Destroy(doorBlocker1);
             Destroy(visionObscur);
-
-            Debug.Log("Start door is unlocked");
+            //Debug.Log("Start door is unlocked");
         }
-        bool OneGhostDown()
-        {
+        bool OneGhostDown(){
             if (numberGhostsKilled >= 1 && numberGoosCleaned >=4){
                 //Debug.Log("testing testing");
                 return true;
@@ -91,8 +86,7 @@ namespace BNG
      
 
         //Checks if you have killed ALL ghosts to unlock the scrub room doors
-        public IEnumerator UnlockScrubRoomDoors()
-        {
+        public IEnumerator UnlockScrubRoomDoors(){
             //Debug.Log("Check if scrub room unlocked");
             yield return new WaitUntil(AllClear);
             scrubRoomDoorR.GetComponent<DoorHelper>().DoorIsLocked = false;
@@ -106,8 +100,7 @@ namespace BNG
 
             Debug.Log("Scrub room unlocked");
         }
-        bool AllClear() //bool for UnlockScrubRoomDoors
-        {
+        bool AllClear(){ //bool for UnlockScrubRoomDoors
             if (numberGhostsKilled >= 5 && numberGoosCleaned >=20){
                 return true;
             }
