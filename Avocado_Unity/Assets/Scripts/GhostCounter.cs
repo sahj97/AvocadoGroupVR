@@ -84,7 +84,6 @@ namespace BNG
             }
         }
      
-
         //Checks if you have killed ALL ghosts to unlock the scrub room doors
         public IEnumerator UnlockScrubRoomDoors(){
             //Debug.Log("Check if scrub room unlocked");

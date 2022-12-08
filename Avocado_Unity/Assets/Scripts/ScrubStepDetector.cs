@@ -17,9 +17,9 @@ namespace BNG
         public bool nailPackageOpen;
 
         [Header("Checklist UI")]
+        public TextMeshProUGUI[] checklistStepsText;
         Color selectedColor;
         Color unselectedColor;
-        public TextMeshProUGUI[] checklistStepsText;
 
         [Header ("Scrubbing Animation")]
         public bool playerIsAtSink;
@@ -39,7 +39,7 @@ namespace BNG
             playerIsAtSink = false;
 
             ColorUtility.TryParseHtmlString("#FFFFFF", out selectedColor);
-            ColorUtility.TryParseHtmlString("698782", out unselectedColor);
+            ColorUtility.TryParseHtmlString("#698782", out unselectedColor);
         }
 
         void Update(){
