@@ -17,11 +17,11 @@ public class TrashCollector : MonoBehaviour
     }
 
     public void OnTriggerStay(Collider other){
-        if (other.gameObject.name == "NailPick"){
+        if (other.gameObject.name == "Grabbable_NailPick(Clone)"){
             nailPickInTrash = true;
             Debug.Log("nail pick in trash");
         }
-        else if (other.gameObject.name == "NailBrush"){
+        else if (other.gameObject.name == "Grabbable_NailSponge(Clone)"){
             nailBrushInTrash = true;
             Debug.Log("nail brush in trash");
         }
