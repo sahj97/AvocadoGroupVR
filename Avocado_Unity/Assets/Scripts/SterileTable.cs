@@ -13,12 +13,6 @@ public class SterileTable : MonoBehaviour
         gownONTable = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //Seeing if glove packet is on the prep table
     public void OnCollisionStay(Collision collision){
         if (collision.gameObject.name == "Grabbable_GlovePack"){

@@ -7,20 +7,41 @@ namespace BNG
 {
     public class NewInputs : MonoBehaviour
     {
+        [Header("Referencing Other Scipts")]
         public ScrubStepDetector scrubStepScript;
         public SterileTable sterileTableScript;
         public ReplaceForOpenGloves replaceOpenGlovesScript;
         public SinkTable sinkTableScript;
-
-        public Grabber rightHandGrabber;
-        public Grabber leftHandGrabber;
+        public OpenNailPackage openNailPackageScript;
 
         [Header("AudioSources")]
         public AudioSource objectOnNoise;
         public AudioSource correctNoise;
+        public AudioSource walkingNoise;
+
+        [Header("Scrub Steps")]
+        public Grabber rightHandGrabber;
+        public Grabber leftHandGrabber;
+        public Animator[] stepAnimsAnimators;
+        public int animationStepNumber;
+        public int[] numberTimesPerStep;
+        public int timesPressedAPerStep;
+
+        
+        public void Start(){
+            animationStepNumber = 0;
+            timesPressedAPerStep = 0;
+        }
 
         // Update is called once per frame
         void Update(){
+
+            //Plays walking sound when L Thumbstick held down
+            if (InputBridge.Instance.LeftThumbstick){
+                walkingNoise.Play();
+            }
+
+
             if (InputBridge.Instance.AButtonDown)                                                                                       //DONT FORGET TO COPY ALL OF THESE FOR LEFT HAND LATER
             {
                 //Checking if player is holding anything in R hand while pressing A
@@ -42,17 +63,28 @@ namespace BNG
                         correctNoise.Play();
                         Destroy(rightHandGrabber.HeldGrabbable.gameObject);
                     }
-                    
+                    //Step 6: Nail Pick Animations while holding nail pick at sink
+                    if (scrubStepScript.currentStep == 5 && scrubStepScript.playerIsAtSink == true && rightHandGrabber.HeldGrabbable.gameObject.name == "Grabbable_NailPick(Clone)")
+                    {
+                        stepAnimsAnimators[0].Play("1NailPickAnim");
+                        scrubStepScript.animationStepPlayed[0] = true;
+                    }
 
 
                 }
 
 
 
-         
+                //if (timesPressedAPerStep < numberTimesPerStep[animationStepNumber])
+                //{
+
+                //}
 
 
-            //Steps that don't involve Player having something in their hands while pressing A
+
+
+
+                //Steps that don't involve Player having something in their hands while pressing A
 
                 //Step 3: Checks if glove packet is on prep table to "open" and model swap
                 if (scrubStepScript.currentStep == 2 && sterileTableScript.glovesONTable == true)
@@ -71,11 +103,16 @@ namespace BNG
                 if (sinkTableScript.nailPackageOnTable == true)
                 {
                     scrubStepScript.nailPackageOpen = true;
-                    //run model swap script on nail package
+                    openNailPackageScript.OpenNailPackageReplace();
                 }
 
             }
             
+
+
+
+
+
         }
 
     }

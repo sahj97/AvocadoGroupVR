@@ -15,6 +15,9 @@ namespace BNG
         public bool getGlovesOpen;
         public bool getGownOpen;
         public bool nailPackageOpen;
+        public bool playerWashingHands;
+        public bool playerSoapHands;
+        public bool playerIsAtSink;
 
         [Header("Checklist UI")]
         public int currentStep;
@@ -22,11 +25,10 @@ namespace BNG
         Color selectedColor;
         Color unselectedColor;
 
-        [Header ("Scrubbing Animation")]
-        public bool playerIsAtSink;
+        [Header("Scrubbing Animation")]
+        public GameObject animationHolder;
         public GameObject[] stepAnimation;
-        public Animator[] stepAnimsAnimators;
-        public int[] numberTimesPerStep;
+        public bool[] animationStepPlayed;
 
 
         //Make sure none of the steps are accidentally checked off before starting
@@ -36,6 +38,9 @@ namespace BNG
             putOnGlasses = false;
             getGlovesOpen = false;
             getGownOpen = false;
+            nailPackageOpen = false;
+            playerWashingHands = false;
+            playerSoapHands = false;
             playerIsAtSink = false;
 
             ColorUtility.TryParseHtmlString("#FFFFFF", out selectedColor);
@@ -64,6 +69,16 @@ namespace BNG
             currentStep = 3;
             Debug.Log("Step 3 done");
             yield return new WaitUntil(StepFourDone);
+            checklistStepsText[3].GetComponent<TextMeshProUGUI>().color = unselectedColor;
+            checklistStepsText[4].GetComponent<TextMeshProUGUI>().color = selectedColor;
+            currentStep = 4;
+            Debug.Log("Step 4 done");
+            yield return new WaitUntil(StepFiveDone);
+            checklistStepsText[4].GetComponent<TextMeshProUGUI>().color = unselectedColor;
+            checklistStepsText[5].GetComponent<TextMeshProUGUI>().color = selectedColor;
+            currentStep = 5;
+            animationHolder.SetActive(true);
+            Debug.Log("Step 5 done");
         }
 
         //Bools checking if each step is done so that the coroutine CheckCurrentStep can progress
@@ -87,6 +102,13 @@ namespace BNG
             }}
         bool StepFourDone(){
             if (nailPackageOpen == true){
+                return true;
+            }
+            else{
+                return false;
+            }}
+        bool StepFiveDone(){
+            if (playerSoapHands == true && playerWashingHands == true){
                 return true;
             }
             else{
