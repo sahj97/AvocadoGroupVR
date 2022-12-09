@@ -23,6 +23,7 @@ public class SterileTable : MonoBehaviour
     public void OnCollisionStay(Collision collision){
         if (collision.gameObject.name == "Grabbable_GlovePack"){
             glovesONTable = true;
+            //have glove UI pop up
             Debug.Log("gloves are on the table");
         }
         if (collision.gameObject.name == "Grabbable_GownPack"){

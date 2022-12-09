@@ -32,27 +32,25 @@ namespace BNG
         public int numberGoosCleaned = 0;
         public bool scrubRoomUnlocked = false;
         public bool ghostBossKilled = false;
-        public bool allGooGones = false;
 
 
-        // Start is called before the first frame update
         void Start(){
             numberGhostsKilled = 0;
             numberGoosCleaned = 0;
             ghostBossKilled = false;
-            allGooGones = false;
             scrubRoomUnlocked = false;
         }
 
-        // Update is called once per frame
         void Update(){
             StartCoroutine(UnlockStartDoors());
             StartCoroutine(UnlockScrubRoomDoors());
         }
 
-        public void GhostiesKilled() {        //this is run on the destroy event of the damagable script on ghosts, keeps track of how many ghosts killed
+
+        //this is run on the destroy event of the damagable script on ghosts, keeps track of how many ghosts killed
+        public void GhostiesKilled() {        
             numberGhostsKilled++;
-            Debug.Log(numberGhostsKilled + "ghost killed (from damagable script)");
+            //Debug.Log(numberGhostsKilled + "ghost killed (from damagable script)");
             if (numberGhostsKilled == 5){
                 ghostBossKilled = true;
             }
@@ -60,7 +58,6 @@ namespace BNG
 
         //Checks if you have killed the first starting ghost to unlock the first set of doors
         public IEnumerator UnlockStartDoors(){
-            //Debug.Log("Check if start door unlocked");
             yield return new WaitUntil(OneGhostDown);
             startRoomDoorR.GetComponent<DoorHelper>().DoorIsLocked = false;
             startRoomDoorR.GetComponent<DoorHelper>().handleLocked = false;
@@ -76,7 +73,6 @@ namespace BNG
         }
         bool OneGhostDown(){
             if (numberGhostsKilled >= 1 && numberGoosCleaned >=4){
-                //Debug.Log("testing testing");
                 return true;
             }
             else{

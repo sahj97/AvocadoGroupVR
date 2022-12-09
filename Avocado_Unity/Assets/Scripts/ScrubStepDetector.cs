@@ -12,18 +12,18 @@ namespace BNG
         [Header("PreScrub Steps Bools")]
         public bool putOnMask;
         public bool putOnGlasses;
-        public bool getGloves;
-        public bool getGown;
+        public bool getGlovesOpen;
+        public bool getGownOpen;
         public bool nailPackageOpen;
 
         [Header("Checklist UI")]
+        public int currentStep;
         public TextMeshProUGUI[] checklistStepsText;
         Color selectedColor;
         Color unselectedColor;
 
         [Header ("Scrubbing Animation")]
         public bool playerIsAtSink;
-        public int currentStep;
         public GameObject[] stepAnimation;
         public Animator[] stepAnimsAnimators;
         public int[] numberTimesPerStep;
@@ -34,8 +34,8 @@ namespace BNG
             currentStep = 0;
             putOnMask = false;
             putOnGlasses = false;
-            getGloves = false;
-            getGown = false;
+            getGlovesOpen = false;
+            getGownOpen = false;
             playerIsAtSink = false;
 
             ColorUtility.TryParseHtmlString("#FFFFFF", out selectedColor);
@@ -63,6 +63,7 @@ namespace BNG
             checklistStepsText[3].GetComponent<TextMeshProUGUI>().color = selectedColor;
             currentStep = 3;
             Debug.Log("Step 3 done");
+            yield return new WaitUntil(StepFourDone);
         }
 
         //Bools checking if each step is done so that the coroutine CheckCurrentStep can progress
@@ -79,8 +80,15 @@ namespace BNG
                 return false;
             }}
         bool StepThreeDone(){
-            if (getGloves == true && getGown == true){
+            if (getGlovesOpen == true && getGownOpen == true){
                 return true;}
+            else{
+                return false;
+            }}
+        bool StepFourDone(){
+            if (nailPackageOpen == true){
+                return true;
+            }
             else{
                 return false;
             }}

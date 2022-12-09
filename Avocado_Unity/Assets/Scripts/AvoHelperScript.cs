@@ -26,13 +26,13 @@ namespace BNG
             ColorUtility.TryParseHtmlString("#FFFFFF", out selectColor);
         }
 
-        //Script for GhostBoss to run on destroy to start animation coroutine
+        //Script for GhostBoss to run on its destroy to start avo animation coroutine
         public void StartAvoCoroutine(){
             Debug.Log("Boss destroyed, starting avo coroutine");
             StartCoroutine(BringInTheAvo());
         }   
 
-        //plays Avocado Helper Animations once you defeat the ghost boss and clean ghost goos
+        //Plays Avocado Helper Animations once you defeat the ghost boss and clean all ghost goos
         public IEnumerator BringInTheAvo(){
             //Plays door opening, avocado walking animations
             Debug.Log("BringInAvo triggered, waiting for goo to be cleaned");
