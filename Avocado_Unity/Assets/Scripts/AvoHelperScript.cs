@@ -16,10 +16,12 @@ namespace BNG
         public Animator doorOR;
         public Animator avoHelper;
         public Animator avoMover;
+        public AudioSource doorOpenSound;
 
         [Header("UI")]
         public GameObject avoSpeakUI;
         public TextMeshProUGUI stepOne;
+        public GameObject cabinetUI;
         public Color selectColor;
 
         private void Start(){
@@ -37,6 +39,7 @@ namespace BNG
             //Plays door opening, avocado walking animations
             Debug.Log("BringInAvo triggered, waiting for goo to be cleaned");
             yield return new WaitUntil(AllGooGone);
+            doorOpenSound.Play();
             doorOR.Play("ScrubDoorOpen");
             avoHelper.Play("WalkCycle");
             avoMover.Play("MoveAvo");
@@ -45,8 +48,10 @@ namespace BNG
             yield return new WaitForSeconds(5f);
             avoHelper.StopPlayback();
             avoHelper.Play("Wave");
+            avoSpeakUI.SetActive(true);
             StartCoroutine(scrubStepScript.CheckCurrentStep());
             stepOne.GetComponent<TextMeshProUGUI>().color = selectColor;
+            cabinetUI.SetActive(true);
         }
 
         bool AllGooGone(){

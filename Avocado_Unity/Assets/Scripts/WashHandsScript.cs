@@ -24,6 +24,10 @@ namespace BNG {
                 scrubStepDetectorScript.playerWashedHands = true;
                 playerCurrentlyWashingHands = true;
             }
+            else if (other.gameObject.tag == "Player" && scrubStepDetectorScript.currentStep == 21)
+            {
+                scrubStepDetectorScript.playerRinseHands = true;
+            }
             else if (other.gameObject.tag == "Player"){
                 playerCurrentlyWashingHands = true;
             }
@@ -34,6 +38,7 @@ namespace BNG {
             }
         }
 
+
         //Run when player presses button on soap dispenser and makes hands soapy
         public void SoapyHands(){
             scrubStepDetectorScript.playerSoapHands = true;
@@ -41,6 +46,9 @@ namespace BNG {
             handRBubblesUI.SetActive(true);
             handLBubblesUI.SetActive(true);
             StartCoroutine(TurnOffSoapyHands());
+            if (scrubStepDetectorScript.currentStep == 12){
+                scrubStepDetectorScript.playerRESoapHands = true;
+            }
         }
 
         //Turns off soap bubble UI at hands when player contacts water stream or just after 15 seconds
@@ -48,14 +56,15 @@ namespace BNG {
         {
             if (playerCurrentlyWashingHands == true)
             {
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(2.5f);
                 handRBubblesUI.SetActive(false);
                 handLBubblesUI.SetActive(false);
                 playerCurretnlySoapyHands = false;
+                Debug.Log("player touched water. bubbles byebye");
             }
             else
             {
-                yield return new WaitForSeconds(15f);
+                yield return new WaitForSeconds(10f);
                 handRBubblesUI.SetActive(false);
                 handLBubblesUI.SetActive(false);
                 playerCurretnlySoapyHands = false;
